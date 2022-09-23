@@ -28,7 +28,10 @@ public class java80_0001_groupProject_calc {
 				System.out.println(temp_num);
 				view_end();
 				continue;
-			}
+			} else if (!oper_check(temp_oper)) {
+				System.out.println("연산자가 아닙니다.");
+				 continue;
+				}
 			
 			view_numberPlz();
 			double temp_num_second = Double.parseDouble(scan.nextLine());
@@ -66,7 +69,8 @@ public class java80_0001_groupProject_calc {
 	}
 
 	private static void view_stringPlz() {
-		System.out.println("연산자를 입력하시오");
+			System.out.println("연산자를 입력하시오");
+		
 	}
 	private static void view_end() {
 		System.out.println("계산 종료를 원하시면 '='을 눌러주세요");
@@ -86,7 +90,27 @@ public class java80_0001_groupProject_calc {
 			result = calc_square(A, C);
 		}
 		return result;
+		
+//		switch(B) {
+//		case "+": 
+//			result = calc_plus(A,C);
+//			break;
+//		case "-":
+//			result = calc_minus(A,C);
+//			break;
+//		case "*":
+//			result = calc_multi(A,C);
+//			break;
+//		case "/":
+//			result = calc_divis(A,C);
+//			break;
+//		case "^":
+//			result = calc_square(A,C);
+//			break;
+//		}
+//		return result;
 	}
+	
 	private static double calc_continue(double A, String B) {
 		double result = 0;
 		if (B.equals("r")) {
@@ -101,6 +125,22 @@ public class java80_0001_groupProject_calc {
 			result = calc_pi(A);
 		}
 		return result;
+	}
+	private static boolean oper_check(String A) {
+		boolean result = false;
+		 if (A.equals("+") ||
+			A.equals("-") ||	
+			A.equals("*") ||
+			A.equals("/") ||
+			A.equals("^") ||	
+			A.equals("r") ||
+			A.equals("log") ||
+			A.equals("log10") ||
+			A.equals("e") ||
+			A.equals("pi")) {
+			result = true;
+		 }
+		 return result;		
 	}
 
 	

@@ -1,5 +1,7 @@
 package human20221011;
 
+import java.util.Arrays;
+
 public class Practice {
 
 	public static void main(String[] args) {
@@ -158,7 +160,7 @@ public class Practice {
 		// 19번
 //		Circle circle = new Circle();
 //		circle.setRadius(5);
-//		System.out.println("넓이 :"+ circle.getArea());
+//		System.out.printf("넓이 : %.2f\n", circle.getArea());
 //		
 //		Rectangle rec = new Rectangle(10,5);
 //		System.out.println("넓이 : "+ rec.getArea());
@@ -206,9 +208,9 @@ public class Practice {
 //		computer 3
 //		>point: -5
 //		history 4
-//		history 30
+//		history 999
 //		>point: 20
-//		history 35
+//		history 999
 //		>point: -20
 
 		// 23번
@@ -231,7 +233,10 @@ public class Practice {
 		// totalPrice() 메서드는 다음과 같다.
 //		public int totalPrice() {
 //			/* 1. 모든 주문 메뉴의 총합을 반환하세요. */
-//				int totalPrice = menus[0].price+menus[1].price+menus[2].price;
+//				int totalPrice = 0;
+//				for(int i = 0; i < menus.length; i++) {
+//					totalPrice += menus[i].price;
+//				}
 //				return totalPrice;
 //			}
 
@@ -253,10 +258,31 @@ public class Practice {
 //		System.out.printf("획득 금액: $%.2f(%.0f원)", dollar, won);
 
 		// 27번
-		printPay(10.00, 40);
-		printPay(10.00, 50);
-		printPay(7.50, 38);
-		printPay(8.50, 66);
+//		printPay(10.00, 40);
+//		printPay(10.00, 50);
+//		printPay(7.50, 38);
+//		printPay(8.50, 66);
+
+		// 28번
+		// 입력값 받기
+//		double start = 72.4;
+//		int after = 5;
+//		// 계산
+//		double result = weight(start, after);
+//		// 결과 출력
+//		System.out.printf("%d개월 후 예상 몸무게 => %.2fkg", after, result);
+
+		// 29번
+		// 배열 생성
+		String[] names = {"Elena", "Suzie", "John", "Emily", "Neda", "Kate",
+				"Alex", "Daniel", "Hamilton"};
+		int[] scores = {65,74,23,75,68,96,88,98,54};
+		// 1등 인덱스 검색
+		int i = topIndex(scores);
+		int j = lastIndex(scores);
+		// 결과 출력
+		System.out.printf("1등: %s(%d점)\n", names[i], scores[i]);
+		System.out.printf("꼴등: %s(%d점)\n",names[j],scores[j]);
 
 	}
 
@@ -274,23 +300,55 @@ public class Practice {
 //		return dollar * (1082.25108);
 //	}
 	// 27번 풀이 메서드
-	public static void printPay(double basePay, int hours) {
-		double pay = 0.0;
-		/* 해당 메소드를 완성하세요. */
-		if (basePay >= 8) {
-			if (hours <= 40) {
-				pay = basePay * hours;
-			} else if (hours > 40 && hours <= 60) {
-				pay = basePay * 40 + basePay * 1.5 * (hours - 40);
-			} else if (hours > 60) {
-				System.out.println("초과 근무시간 에러!");
+//	public static void printPay(double basePay, int hours) {
+//		double pay = 0.0;
+//		/* 해당 메소드를 완성하세요. */
+//		if (basePay >= 8) {
+//			if (hours <= 40) {
+//				pay = basePay * hours;
+//			} else if (hours > 40 && hours <= 60) {
+//				pay = basePay * 40 + basePay * 1.5 * (hours - 40);
+//			} else if (hours > 60) {
+//				System.out.println("초과 근무시간 에러!");
+//			}
+//		} else if (basePay < 8) {
+//			System.out.println("최저 시급 에러!");
+//		}
+//		if (pay != 0) {
+//			System.out.printf("$ %.2f\n", pay);
+//		}
+//	}
+	// 28번 풀이 메서드
+	// 시작 몸무게와 n개월 후 값을 입력받아 예상 몸무게를 반환
+//	public static double weight(double currentWeight, int months) {
+//	double expectedWeight = currentWeight;
+//	for (int i = 1; i<=months; i++) {
+//	expectedWeight += 0.231;
+//	}
+//	return expectedWeight;
+//	}
+	//29번 풀이 메서드
+	// 정수형 배열을 입력받아 가장 큰 값의 인덱스를 반환
+	public static int topIndex(int[] arr) {
+		int topIndex = 0;
+		for(int i = 0; i<arr.length; i++) {
+			if(arr[i]>arr[topIndex]) {
+				topIndex = i;
+				}
 			}
-		} else if (basePay < 8) {
-			System.out.println("최저 시급 에러!");
-		}
-		if (pay != 0) {
-			System.out.printf("$ %.2f\n", pay);
-		}
+	return topIndex;
 	}
+	//29번 풀이 메서드
+	//정수형 배열을 입력받아 가장 큰 값의 인덱스를 반환
+	public static int lastIndex(int[] arr) {
+		int lastIndex = 0;
+		for(int i = 0; i<arr.length; i++) {
+			if(arr[i]<arr[lastIndex]) {
+				lastIndex = i;
+				}
+			}
+	return lastIndex;
+	}
+
 
 }

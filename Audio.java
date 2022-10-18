@@ -1,6 +1,6 @@
-package human20221017;
+package human20221018;
 
-public class Audio implements RemoteControl {
+public class Audio extends HomeApp implements RemoteControl {
 	int volume;
 	String brand;
 	String color;

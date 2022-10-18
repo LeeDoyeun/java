@@ -1,6 +1,6 @@
-package human20221017;
+package human20221018;
 
-public class SmartTelevision implements Smartable{
+public class SmartTelevision extends HomeApp implements Smartable, GiniConnectable{
 
 	int volume;
 	int inch;
@@ -8,13 +8,15 @@ public class SmartTelevision implements Smartable{
 	int smartModuleCount;// 스마트 모듈 개수
 
 	public SmartTelevision(String brand, int inch, int smartModuleCount) {
-       this.brand=brand;
-       this.inch=inch;
-       this.smartModuleCount=smartModuleCount;
-       this.volume=0;
-	       
-       
-    }
+		this.brand = brand;
+		this.inch = inch;
+		this.smartModuleCount = smartModuleCount;
+		this.volume = 0;
+	}
+	
+	public String toString() {
+		return String.format("%s 브랜드 스마트티비 현재 볼륨 : %d", brand,volume);
+	}
 
 	@Override
 	public void turnOn() {
@@ -52,5 +54,9 @@ public class SmartTelevision implements Smartable{
 	public void connectBluetooth() {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void connectGini() {
+		System.out.println("기가 지니를 연결합니다.");
 	}
 }

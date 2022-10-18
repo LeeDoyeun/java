@@ -1,4 +1,4 @@
-package human20221017;
+package human20221018;
 
 public interface RemoteControl {
 	//변수선언 -> 상수

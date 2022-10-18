@@ -1,6 +1,6 @@
-package human20221017;
+package human20221018;
 
-public class Television implements RemoteControl{
+public class Television extends HomeApp implements RemoteControl{
 	//클래스 필드 변수
 	int volume;//볼륨
 	int inch;
@@ -10,6 +10,10 @@ public class Television implements RemoteControl{
 		volume = 0;
 		this.brand = brand;
 		this.inch = inch;
+	}
+	
+	public String toString() {
+		return String.format("%s 브랜드 티비 현재 볼륨 : %d", brand,volume);
 	}
 	
 	void powerOn() {

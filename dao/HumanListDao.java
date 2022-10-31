@@ -1,10 +1,10 @@
-package human20221028.dao;
+package human20221031.dao;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-import human20221027.dto.HumanDto;
+import human20221031.dto.HumanDto;
 import human20221028.UserInput;
 
 public class HumanListDao {
@@ -22,25 +22,30 @@ public class HumanListDao {
 				LocalDateTime.parse("2000-12-21 00:00:00", DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))));
 	}
 
-	public void select() {
+	public ArrayList<HumanDto> select() {
+		ArrayList<HumanDto> resultDtos = new ArrayList<HumanDto>(); 
 //		System.out.println("select"); //첫번째 방법
-//		for(HumanDto dto : dtos) {
-//			dto.myPrint();
-//		}
-		System.out.println("select"); // 두번째 방법
-		for (int i = 0; i < dtos.size(); i++) {
-			dtos.get(i).myPrint();
+		for(HumanDto dto : dtos) {
+			resultDtos.add(new HumanDto(dto.getName(),dto.getAge(),
+					dto.getHeight(),dto.getBirthday()));
 		}
+//		System.out.println("select"); // 두번째 방법
+//		for (int i = 0; i < dtos.size(); i++) {
+//			dtos.get(i).myPrint();
+//		}
+		return resultDtos;
 	}
 
-	public void select(double height) {
+	public ArrayList<HumanDto> select(double height) {
 		// 키가 155 이상인 사람 출력
+		ArrayList<HumanDto> resultDtos = new ArrayList<HumanDto>();
 		System.out.println("select height xxx 이상");
-		for (int i = 0; i < dtos.size(); i++) {
-			if (dtos.get(i).getHeight() >= 155) {
-				dtos.get(i).myPrint();
+		for (HumanDto dto : dtos) {
+			if(dto.getHeight()>height) {
+				resultDtos.add(new HumanDto(dto));
 			}
 		}
+		return resultDtos;
 	}
 
 	public void insert(HumanDto dto) {
